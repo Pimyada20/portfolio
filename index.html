@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แฟ้มสะสมผลงาน - [Pimyada Meeliang]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A2E24',    // เขียวเข้มหรู
+                        secondary: '#C8A951',  // สีทอง
+                        accent: '#F8FBF9',
+                        dark: '#141E1A',
+                    },
+                    fontFamily: {
+                        thai: ['"Noto Sans Thai"', 'sans-serif'], // ฟอนต์ไทยไม่เอียง สวยชัด
+                        head: ['"Playfair Display"', 'serif'],
+                    },
+                    boxShadow: {
+                        'luxury': '0 10px 40px rgba(10, 46, 36, 0.12)',
+                        'gold': '0 4px 20px rgba(200, 169, 81, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto { content-visibility: auto; }
+            .text-shadow-luxury { text-shadow: 0 2px 12px rgba(10, 46, 36, 0.18); }
+            .nav-item { position: relative; letter-spacing: 0.5px; }
+            .nav-item::after {
+                content: '';
+                position: absolute;
+                bottom: -6px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #C8A951, transparent);
+                transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            }
+            .nav-item:hover::after { width: 100%; }
+            .card-luxury { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); border: 1px solid rgba(200, 169, 81, 0.15); }
+            .card-luxury:hover { transform: translateY(-6px); box-shadow: 0 12px 45px rgba(10, 46, 36, 0.15); border-color: rgba(200, 169, 81, 0.4); }
+            .gold-divider { position: relative; }
+            .gold-divider::after {
+                content: '';
+                position: absolute;
+                bottom: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #C8A951, transparent);
+            }
+            .border-gold-luxury { border: 1px solid rgba(200, 169, 81, 0.3); }
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-accent text-dark font-thai">
+
+    <nav class="fixed w-full top-0 z-50 bg-white/98 backdrop-blur-lg shadow-luxury">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center text-lg font-head shadow-gold">KU</div>
+                <span class="text-lg font-semibold text-primary tracking-wide">[Pimyada]</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="nav-item hover:text-primary">หน้าแรก</a>
+                <a href="#about" class="nav-item hover:text-primary">ประวัติ</a>
+                <a href="#edu" class="nav-item hover:text-primary">การศึกษา</a>
+                <!-- ✅ ปรับสีเมนู SOP เป็นปกติเหมือนเมนูอื่นแล้ว -->
+                <a href="#sop" class="nav-item hover:text-primary">SOP</a>
+                <a href="#act" class="nav-item hover:text-primary">ผลงาน/กิจกรรม</a>
+                <a href="#contact" class="nav-item hover:text-primary">ติดต่อ</a>
+                <span class="px-5 py-1.5 bg-primary text-white rounded-full text-xs tracking-wider shadow-gold">ADMISSION 2026</span>
+            </div>
+            <button class="md:hidden text-primary text-2xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center pt-28 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-20">
+                <div class="relative" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-secondary p-1 shadow-gold">
+                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white">
+                            <img src="profile.jpg" alt="รูปประจำตัว" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-4 -right-6 bg-secondary text-white px-8 py-2.5 rounded-full shadow-gold font-semibold text-sm tracking-wider">
+                        <i class="fa-solid fa-folder-open mr-2"></i> PORTFOLIO
+                    </div>
+                </div>
+                <div class="text-center md:text-left" data-aos="fade-left" data-aos-duration="1200">
+                    <p class="text-primary/60 tracking-[0.2em] mb-4 text-sm">WELCOME TO MY PORTFOLIO</p>
+                    <h1 class="text-[clamp(2.8rem,6vw,4.5rem)] font-head font-bold text-primary leading-tight text-shadow-luxury mb-6">
+                        [Pimyada Meeliang]
+                    </h1>
+                  <p class="text-xl md:text-2xl font-medium mb-3 tracking-wide"> นางสาว พิมพ์ญาดา มีเลี้ยง </p>
+                    <p class="text-xl md:text-2xl font-medium mb-3 tracking-wide">คณะ บริหารธุรกิจ </p>
+                    <p class="text-xl md:text-2xl font-medium mb-3 tracking-wide">สาขา ....................................</p>
+                    <p class="text-lg mt-4 text-gray-600">มหาวิทยาลัยเกษตรศาสตร์ </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 gold-divider">
+                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">ประวัติส่วนตัว</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="bg-accent p-8 md:p-10 rounded-2xl border-gold-luxury shadow-luxury" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-sm uppercase tracking-[0.15em] text-gray-500 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-user text-secondary"></i> ข้อมูลผู้สมัคร
+                    </h3>
+                    <div class="space-y-4 text-lg">
+                        <p><span class="font-semibold text-primary mr-4">ชื่อ-นามสกุล :</span> นางสาว พิมพ์ญาดา มีเลี้ยง</p>
+                        <p><span class="font-semibold text-primary mr-4">โรงเรียน :</span> กระทุ่มแบน ”วิเศษสมุทคุณ”</p>
+                        <p><span class="font-semibold text-primary mr-4">แผนการเรียน :</span>คณิตศาสตร์-อังกฤษ</p>
+                    </div>
+                </div>
+                <div class="bg-primary text-white p-8 md:p-10 rounded-2xl shadow-luxury" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-sm uppercase tracking-[0.15em] text-white/70 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-bullseye text-secondary"></i> เป้าหมายการศึกษา
+                    </h3>
+                    <p class="leading-relaxed text-lg">
+                        "เป้าหมายสูงสุดของการเรียนต่อ ไม่ใช่แค่การได้มาซึ่งปริญญา แต่คือการได้หล่อหลอมตนเองในสถาบันที่มีคุณภาพอย่างมหาวิทยาลัยเกษตรศาสตร์ เพื่อเปลี่ยนความชอบให้กลายเป็นความชำนาญ และต่อยอดไปสู่เส้นทางอาชีพที่ตั้งใจไว้อย่างสมบูรณ์"
+                    </p>
+                    <p class="text-right mt-8 text-white/60 font-head">— [By Pimyada 🌧️] —</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="edu" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 gold-divider">
+                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">ประวัติการศึกษา</h2>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="relative border-l border-secondary/30 ml-6 space-y-14">
+                    <div class="relative pl-10" data-aos="fade-right">
+                        <div class="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-secondary shadow-gold"></div>
+                        <h4 class="text-sm text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-3">
+                            <i class="fa-solid fa-school"></i> มัธยมศึกษาตอนต้น
+                        </h4>
+                        <p class="text-xl font-medium text-primary">โรงเรียนกระทุ่มแบน ”วิเศษสมุทคุณ”</p>
+                    </div>
+                    <div class="relative pl-10" data-aos="fade-right" data-aos-delay="150">
+                        <div class="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-secondary shadow-gold"></div>
+                        <h4 class="text-sm text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap"></i> มัธยมศึกษาตอนปลาย
+                        </h4>
+                        <p class="text-xl font-medium text-primary">โรงเรียนกระทุ่มแบน ”วิเศษสมุทคุณ”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sop" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 gold-divider">
+                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary flex items-center justify-center gap-3" data-aos="fade-up">
+                    <i class="fa-solid fa-file-pen text-secondary"></i> Statement of Purpose
+                </h2>
+                <p class="text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="50">เจตจำนงและเป้าหมายในการศึกษา</p>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-accent p-10 rounded-2xl border-gold-luxury shadow-luxury text-center" data-aos="fade-up">
+                    <p class="text-xl leading-relaxed text-gray-700">
+                        ด้วยความมุ่งมั่นและความตั้งใจอย่างแน่วแน่ ดิฉันมีความประสงค์เข้าศึกษาต่อในคณะ…………… สาขา…………… มหาวิทยาลัย…………… เพื่อพัฒนาความรู้ ความสามารถ และศักยภาพของตนเองให้พร้อมต่อการประกอบวิชาชีพในอนาคต พร้อมนำองค์ความรู้ที่ได้รับไปต่อยอดความฝัน สร้างคุณค่าให้แก่สังคม และเป็นกำลังสำคัญในการพัฒนาประเทศต่อไป
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="act" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 gold-divider">
+                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">กิจกรรมและผลงาน</h2>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="card-luxury bg-accent p-8 rounded-2xl" data-aos="fade-up">
+                    <h4 class="font-semibold text-primary mb-5 flex items-center gap-3 text-lg">
+                        <i class="fa-solid fa-calendar-check text-secondary"></i> ประสบการณ์การทำงาน
+                    </h4>
+                    <p class="mb-2 text-gray-700">รายการประสบการณ์การทำงาน/กิจกรรม
+
+ชื่อกิจกรรม :[ ผู้ช่วยขายสินค้าและบริการลูกค้า ]
+หน่วยงาน/สถานที่ :[ ร้านขายน้ำ-เครื่องดื่ม ภายในชุมชนฃ ]
+ช่วงเวลา :[ ทุกวันหยุดเสาร์-อาทิตย์ , ปิดเทอม มีนาคม - พฤษภาคม 2568,2569]
+ตำแหน่ง/หน้าที่ :[ จัดเตรียมเครื่องดื่ม, เสิร์ฟสินค้า, คิดเงินและดูแลลูกค้า ]</p>
+                </div>
+                <div class="card-luxury bg-primary text-white p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
+                    <h4 class="font-semibold mb-5 flex items-center gap-3 text-lg">
+                        <i class="fa-solid fa-lightbulb text-secondary"></i> สิ่งที่ได้รับและบทเรียน
+                    </h4>
+                    <p class="text-white/90">ได้ฝึกฝนความรับผิดชอบ การตรงต่อเวลา และการทำงานเป็นระบบ นอกจากนี้ยังพัฒนาทักษะการสื่อสาร การเข้าใจความต้องการของผู้อื่น และการจัดการปัญหาเฉพาะหน้าเมื่อให้บริการลูกค้า รวมถึงได้เรียนรู้คุณค่าของการทำงานและการวางแผนการใช้จ่ายเงินอย่างมีประสิทธิภาพค่ะ</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-24 mb-12 gold-divider">
+                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">แฟ้มสะสมผลงาน</h2>
+                <p class="text-gray-500 mt-4">คลิกที่ภาพเพื่อดูรายละเอียด</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="card-luxury bg-accent p-5 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="50">
+                    <div class="aspect-[3/4] bg-white rounded-xl mb-4 flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-image text-5xl"></i>
+                    </div>
+                    <p class="font-medium text-primary tracking-wide">ผลงานที่ 1</p>
+                </div>
+                <div class="card-luxury bg-accent p-5 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[3/4] bg-white rounded-xl mb-4 flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-image text-5xl"></i>
+                    </div>
+                    <p class="font-medium text-primary tracking-wide">ผลงานที่ 2</p>
+                </div>
+                <div class="card-luxury bg-accent p-5 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="150">
+                    <div class="aspect-[3/4] bg-white rounded-xl mb-4 flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-image text-5xl"></i>
+                    </div>
+                    <p class="font-medium text-primary tracking-wide">ผลงานที่ 3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 gold-divider">
+                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">ช่องทางการติดต่อ</h2>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 max-w-2xl mx-auto">
+                <a href="#" class="card-luxury flex items-center gap-4 bg-accent px-10 py-4 rounded-2xl" data-aos="fade-up">
+                    <i class="fa-brands fa-facebook-f text-2xl text-secondary"></i>
+                    <span class="font-medium">Pimyada Meeliang</span>
+                </a>
+                <a href="#" class="card-luxury flex items-center gap-4 bg-accent px-10 py-4 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-brands fa-instagram text-2xl text-secondary"></i>
+                    <span class="font-medium">ppiimmyada_</span>
+                </a>
+                <a href="#" class="card-luxury flex items-center gap-4 bg-accent px-10 py-4 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-envelope text-2xl text-secondary"></i>
+                    <span class="font-medium">nnvv@0110</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-white/80 py-10 text-center text-sm tracking-wider">
+        <p>&copy; 2026 [PIMYADA MEELIANG] | All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 1000, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' });</script>
+</body>
+</html>
 
