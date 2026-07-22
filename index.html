@@ -19,7 +19,7 @@
                         dark: '#141E1A',
                     },
                     fontFamily: {
-                        thai: ['"Noto Sans Thai"', 'sans-serif'],
+                        thai: ['"Sarabun"', 'sans-serif'], // ✅ เปลี่ยนเป็นฟอนต์สารบรรณ
                         head: ['"Playfair Display"', 'serif'],
                     },
                     boxShadow: {
@@ -65,9 +65,10 @@
         }
     </style>
 
+    <!-- ✅ เรียกใช้ฟอนต์ Sarabun จาก Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-accent text-dark font-thai">
 
@@ -130,7 +131,7 @@
                     </h3>
                     <div class="space-y-4 text-lg">
                         <p><span class="font-semibold text-primary mr-4">ชื่อ-นามสกุล :</span> นางสาว พิมพ์ญาดา มีเลี้ยง</p>
-                        <p><span class="font-semibold text-primary mr-4">โรงเรียน :</span> โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ" </p>
+                        <p><span class="font-semibold text-primary mr-4">โรงเรียน :</span> โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
                         <p><span class="font-semibold text-primary mr-4">แผนการเรียน :</span> คณิต-อังกฤษ</p>
                     </div>
                 </div>
@@ -139,11 +140,12 @@
                         <i class="fa-solid fa-bullseye text-secondary"></i> เป้าหมายการศึกษา
                     </h3>
                     <p class="leading-relaxed text-lg">
-"เป้าหมายสูงสุดของการเรียนต่อ ไม่ใช่แค่การได้มาซึ่งปริญญา แต่คือการได้หล่อหลอมตนเองในสถาบันที่มีคุณภาพอย่างมหาวิทยาลัยเกษตรศาสตร์ เพื่อเปลี่ยนความชอบให้กลายเป็นความชำนาญ และต่อยอดไปสู่เส้นทางอาชีพที่ตั้งใจไว้อย่างสมบูรณ์"
-
+                        "เป้าหมายสูงสุดของการเรียนต่อ ไม่ใช่แค่การได้มาซึ่งปริญญา แต่คือการได้หล่อหลอมตนเองในสถาบันที่มีคุณภาพอย่างมหาวิทยาลัยเกษตรศาสตร์ เพื่อเปลี่ยนความชอบให้กลายเป็นความชำนาญ และต่อยอดไปสู่เส้นทางอาชีพที่ตั้งใจไว้อย่างสมบูรณ์"
                     </p>
-                    <p class="text-left mt-8 text-white/60 font-head">EDUCATIONAL MINDSET </p>
-                    <p class="text-right mt-8 text-white/60 font-head">— PIMYADA 🌧️ —</p>
+                    <div class="mt-12 flex justify-between items-end">
+                        <p class="text-white/50 text-sm uppercase tracking-widest">EDUCATIONAL MINDSET</p>
+                        <p class="text-white/70 font-head tracking-wider">— PIMYADA ☁️ —</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,7 +208,7 @@
                     <div class="space-y-2 text-gray-700">
                         <p><span class="font-medium text-primary">ชื่อกิจกรรม :</span> ผู้ช่วยขายสินค้าและบริการลูกค้า</p>
                         <p><span class="font-medium text-primary">สถานที่ :</span> ร้านอาหาร-เครื่องดื่ม ภายในชุมชนซอย</p>
-                        <p><span class="font-medium text-primary">ช่วงเวลา :</span> ทุกวันหยุดเสาร์-อาทิตย์, ปิดเทอม มีนาคม-พฤภาคม พ.ศ. 2568 – 2569</p>
+                        <p><span class="font-medium text-primary">ช่วงเวลา :</span> ทุกวันหยุดเสาร์-อาทิตย์, ปิดเทอม มีนาคม-พฤษภาคม พ.ศ. 2568 – 2569</p>
                         <p><span class="font-medium text-primary">หน้าที่รับผิดชอบ :</span> จัดเตรียมเครื่องดื่ม, เสิร์ฟสินค้า, คิดเงินและดูแลลูกค้า</p>
                     </div>
                 </div>
@@ -215,10 +217,12 @@
                         <i class="fa-solid fa-lightbulb text-secondary"></i> สิ่งที่ได้รับและบทเรียน
                     </h4>
                     <p class="text-white/90 leading-relaxed">
-ได้ฝึกฝนความรับผิดชอบ การตรงต่อเวลา และการทำงานเป็นระบบ นอกจากนี้ยังพัฒนาทักษะการสื่อสาร การเข้าใจความต้องการของผู้อื่น และการจัดการปัญหาเฉพาะหน้าเมื่อให้บริการลูกค้า รวมถึงได้เรียนรู้คุณค่าของการทำงานและการวางแผนการใช้จ่ายเงินอย่างมีประสิทธิภาพค่ะ
+                        ได้ฝึกฝนความรับผิดชอบ การตรงต่อเวลา และการทำงานเป็นระบบ นอกจากนี้ยังพัฒนาทักษะการสื่อสาร การเข้าใจความต้องการของผู้อื่น และการจัดการปัญหาเฉพาะหน้าเมื่อให้บริการลูกค้า รวมถึงได้เรียนรู้คุณค่าของการทำงานและการวางแผนการใช้จ่ายเงินอย่างมีประสิทธิภาพค่ะ
                     </p>
-                    <p class="text-left mt-8 text-white/60 font-head">EXPERIENCE SUMMARY </p>
-                    <p class="text-right mt-8 text-white/60 font-head">— PIMYADA 💡 —</p>
+                    <div class="mt-12 flex justify-between items-end">
+                        <p class="text-white/50 text-sm uppercase tracking-widest">EXPERIENCE SUMMARY</p>
+                        <p class="text-white/70 font-head tracking-wider">— PIMYADA 💡 —</p>
+                    </div>
                 </div>
             </div>
 
@@ -272,7 +276,7 @@
     </section>
 
     <footer class="bg-primary text-white/80 py-10 text-center text-sm tracking-wider">
-        <p>&copy; 2026 PIMYADA MEELIANG| All Rights Reserved.</p>
+        <p>&copy; 2026 PIMYADA MEELIANG | All Rights Reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
