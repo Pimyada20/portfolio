@@ -19,12 +19,13 @@
                         dark: '#141E1A',
                     },
                     fontFamily: {
-                        thai: ['"Sarabun"', 'sans-serif'], // ✅ เปลี่ยนเป็นฟอนต์สารบรรณ
+                        thai: ['"Sarabun"', 'sans-serif'],
                         head: ['"Playfair Display"', 'serif'],
                     },
                     boxShadow: {
-                        'luxury': '0 10px 40px rgba(10, 46, 36, 0.12)',
-                        'gold': '0 4px 20px rgba(200, 169, 81, 0.25)',
+                        'luxury': '0 15px 50px rgba(10, 46, 36, 0.18)',
+                        'gold': '0 8px 30px rgba(200, 169, 81, 0.35)',
+                        'gold-soft': '0 4px 20px rgba(200, 169, 81, 0.15)',
                     }
                 }
             }
@@ -34,252 +35,304 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .content-auto { content-visibility: auto; }
-            .text-shadow-luxury { text-shadow: 0 2px 12px rgba(10, 46, 36, 0.18); }
-            .nav-item { position: relative; letter-spacing: 0.5px; }
+            .text-shadow-luxury { text-shadow: 0 4px 20px rgba(10, 46, 36, 0.25); }
+            .nav-item { position: relative; letter-spacing: 0.8px; font-weight: 500; }
             .nav-item::after {
                 content: '';
                 position: absolute;
-                bottom: -6px;
+                bottom: -8px;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 0;
-                height: 2px;
+                height: 3px;
                 background: linear-gradient(90deg, transparent, #C8A951, transparent);
-                transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+                transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
             }
             .nav-item:hover::after { width: 100%; }
-            .card-luxury { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); border: 1px solid rgba(200, 169, 81, 0.15); }
-            .card-luxury:hover { transform: translateY(-6px); box-shadow: 0 12px 45px rgba(10, 46, 36, 0.15); border-color: rgba(200, 169, 81, 0.4); }
+            .card-luxury { transition: all 0.5s cubic-bezier(0.4,0,0.2,1); border: 1px solid rgba(200, 169, 81, 0.2); background: linear-gradient(145deg, #ffffff, #f8faf9); }
+            .card-luxury:hover { transform: translateY(-8px) scale-[1.01]; box-shadow: 0 20px 60px rgba(10, 46, 36, 0.2); border-color: rgba(200, 169, 81, 0.5); }
             .gold-divider { position: relative; }
             .gold-divider::after {
                 content: '';
                 position: absolute;
-                bottom: -12px;
+                bottom: -15px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 80px;
-                height: 3px;
+                width: 120px;
+                height: 4px;
                 background: linear-gradient(90deg, transparent, #C8A951, transparent);
             }
-            .border-gold-luxury { border: 1px solid rgba(200, 169, 81, 0.3); }
+            .border-gold-luxury { border: 1px solid rgba(200, 169, 81, 0.35); }
+            .bg-gradient-gold { background: linear-gradient(135deg, #C8A951, #E6C874); }
+            .text-gradient-gold { background: linear-gradient(90deg, #C8A951, #E6C874); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+            .decor-line { position: relative; }
+            .decor-line::before, .decor-line::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 60px;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, #C8A951, transparent);
+            }
+            .decor-line::before { left: -80px; }
+            .decor-line::after { right: -80px; }
         }
     </style>
 
-    <!-- ✅ เรียกใช้ฟอนต์ Sarabun จาก Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-accent text-dark font-thai">
 
-    <nav class="fixed w-full top-0 z-50 bg-white/98 backdrop-blur-lg shadow-luxury">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center text-lg font-head shadow-gold">KU</div>
-                <span class="text-lg font-semibold text-primary tracking-wide">Pimyada</span>
+    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-xl shadow-luxury border-b border-gold-luxury">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gradient-gold text-primary flex items-center justify-center text-xl font-head shadow-gold">KU</div>
+                <span class="text-xl font-semibold text-primary tracking-wider">Pimyada Meeliang</span>
             </div>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#home" class="nav-item hover:text-primary">หน้าแรก</a>
-                <a href="#about" class="nav-item hover:text-primary">ประวัติ</a>
-                <a href="#edu" class="nav-item hover:text-primary">การศึกษา</a>
-                <a href="#sop" class="nav-item hover:text-primary">SOP</a>
-                <a href="#act" class="nav-item hover:text-primary">ผลงาน/กิจกรรม</a>
-                <a href="#contact" class="nav-item hover:text-primary">ช่องทางการติดต่อ</a>
-                <span class="px-5 py-1.5 bg-primary text-white rounded-full text-xs tracking-wider shadow-gold">ADMISSION 2026</span>
+            <div class="hidden md:flex items-center gap-9 text-sm">
+                <a href="#home" class="nav-item hover:text-secondary">หน้าแรก</a>
+                <a href="#about" class="nav-item hover:text-secondary">ประวัติ</a>
+                <a href="#edu" class="nav-item hover:text-secondary">การศึกษา</a>
+                <a href="#special" class="nav-item hover:text-secondary">ความสามารถพิเศษ</a>
+                <a href="#sop" class="nav-item hover:text-secondary">เจตจำนง</a>
+                <a href="#act" class="nav-item hover:text-secondary">ผลงาน</a>
+                <a href="#contact" class="nav-item hover:text-secondary">ติดต่อ</a>
+                <span class="px-6 py-2 bg-gradient-gold text-primary rounded-full text-xs font-semibold tracking-wider shadow-gold">ADMISSION 2026</span>
             </div>
-            <button class="md:hidden text-primary text-2xl"><i class="fa-solid fa-bars"></i></button>
+            <button class="md:hidden text-primary text-3xl"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex items-center pt-28 pb-20">
-        <div class="container mx-auto px-4">
+    <!-- หน้าแรก อลังการขึ้น -->
+    <section id="home" class="min-h-screen flex items-center pt-32 pb-24 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-5">
+            <div class="absolute top-20 left-10 w-64 h-64 rounded-full border-2 border-secondary"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 rounded-full border-2 border-secondary"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col md:flex-row items-center justify-center gap-20">
-                <div class="relative" data-aos="fade-right" data-aos-duration="1200">
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-secondary p-1 shadow-gold">
-                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white">
+                <div class="relative" data-aos="fade-right" data-aos-duration="1500">
+                    <div class="w-72 h-72 md:w-96 md:h-96 rounded-full border-4 border-secondary p-2 shadow-gold">
+                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-2xl">
                             <img src="profile.jpg" alt="รูปประจำตัว" class="w-full h-full object-cover">
                         </div>
                     </div>
-                    <div class="absolute -bottom-4 -right-6 bg-secondary text-white px-8 py-2.5 rounded-full shadow-gold font-semibold text-sm tracking-wider">
-                        <i class="fa-solid fa-folder-open mr-2"></i> PORTFOLIO
+                    <div class="absolute -bottom-6 -right-8 bg-gradient-gold text-primary px-10 py-3 rounded-full shadow-gold font-bold tracking-widest text-sm">
+                        <i class="fa-solid fa-folder-open mr-3"></i> PORTFOLIO
                     </div>
                 </div>
-                <div class="text-center md:text-left" data-aos="fade-left" data-aos-duration="1200">
-                    <p class="text-primary/60 tracking-[0.2em] mb-4 text-sm">WELCOME TO MY PORTFOLIO</p>
-                    <h1 class="text-[clamp(2.8rem,6vw,4.5rem)] font-head font-bold text-primary leading-tight text-shadow-luxury mb-6">
-                        Pimyada Meeliang
+                <div class="text-center md:text-left flex-1 max-w-xl" data-aos="fade-left" data-aos-duration="1500">
+                    <p class="text-secondary/80 tracking-[0.3em] mb-5 text-sm font-medium">WELCOME TO MY PORTFOLIO</p>
+                    <h1 class="text-[clamp(3rem,7vw,5rem)] font-head font-bold text-primary leading-tight text-shadow-luxury mb-8">
+                        Pimyada<br>Meeliang
                     </h1>
-                    <p class="text-xl md:text-2xl font-medium mb-3 tracking-wide">นางสาว พิมพ์ญาดา มีเลี้ยง</p>
-                    <p class="text-xl md:text-2xl font-medium mb-3 tracking-wide">คณะ บริหารธุรกิจ</p>
-                    <p class="text-xl md:text-2xl font-medium mb-3 tracking-wide">สาขา ....................................</p>
-                    <p class="text-lg mt-4 text-gray-600">มหาวิทยาลัยเกษตรศาสตร์</p>
-                    <p class="text-lg mt-4 text-gray-600">KASETSART UNIVERSITY </p>
+                    <p class="text-xl md:text-2xl font-medium mb-3">นางสาว พิมพ์ญาดา มีเลี้ยง</p>
+                    <p class="text-xl md:text-2xl font-medium mb-3">คณะ บริหารธุรกิจ</p>
+                    <p class="text-xl md:text-2xl font-medium mb-8">สาขา ....................................</p>
+                    
+                    <!-- รูปมหาวิทยาลัย -->
+                    <div class="flex items-center gap-5 mt-8 p-4 bg-white/60 rounded-2xl border-gold-luxury shadow-gold-soft">
+                        <div class="w-20 h-20 rounded-xl overflow-hidden border-gold-luxury shadow-gold flex-shrink-0">
+                            <img src="university.jpg" alt="โลโก้มหาวิทยาลัยเกษตรศาสตร์" class="w-full h-full object-contain bg-white p-2">
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-primary">มหาวิทยาลัยเกษตรศาสตร์</p>
+                            <p class="text-gray-600 font-medium">KASETSART UNIVERSITY</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-24 bg-white relative">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20 gold-divider">
-                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">ประวัติส่วนตัว</h2>
+            <div class="text-center mb-24 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block" data-aos="fade-up">ประวัติส่วนตัว</h2>
             </div>
-            <div class="max-w-3xl mx-auto space-y-8">
-                <div class="bg-accent p-8 md:p-10 rounded-2xl border-gold-luxury shadow-luxury" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-sm uppercase tracking-[0.15em] text-gray-500 mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-user text-secondary"></i> ข้อมูลผู้สมัคร
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div class="bg-accent p-10 md:p-12 rounded-3xl border-gold-luxury shadow-luxury" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-sm uppercase tracking-[0.2em] text-gray-500 mb-8 flex items-center gap-4">
+                        <i class="fa-solid fa-user text-secondary text-xl"></i> ข้อมูลผู้สมัคร
                     </h3>
-                    <div class="space-y-4 text-lg">
-                        <p><span class="font-semibold text-primary mr-4">ชื่อ-นามสกุล :</span> นางสาว พิมพ์ญาดา มีเลี้ยง</p>
-                        <p><span class="font-semibold text-primary mr-4">โรงเรียน :</span> โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
-                        <p><span class="font-semibold text-primary mr-4">แผนการเรียน :</span> คณิต-อังกฤษ</p>
+                    <div class="space-y-5 text-xl">
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-40">ชื่อ-นามสกุล :</span> นางสาว พิมพ์ญาดา มีเลี้ยง</p>
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-40">โรงเรียน :</span> โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-40">แผนการเรียน :</span> คณิตศาสตร์ - ภาษาอังกฤษ</p>
                     </div>
                 </div>
-                <div class="bg-primary text-white p-8 md:p-10 rounded-2xl shadow-luxury" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-sm uppercase tracking-[0.15em] text-white/70 mb-6 flex items-center gap-3">
-                        <i class="fa-solid fa-bullseye text-secondary"></i> เป้าหมายการศึกษา
+                <div class="bg-primary text-white p-10 md:p-12 rounded-3xl shadow-luxury" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-sm uppercase tracking-[0.2em] text-white/70 mb-8 flex items-center gap-4">
+                        <i class="fa-solid fa-bullseye text-secondary text-xl"></i> เป้าหมายการศึกษา
                     </h3>
-                    <p class="leading-relaxed text-lg">
-                        "เป้าหมายสูงสุดของการเรียนต่อ ไม่ใช่แค่การได้มาซึ่งปริญญา แต่คือการได้หล่อหลอมตนเองในสถาบันที่มีคุณภาพอย่างมหาวิทยาลัยเกษตรศาสตร์ เพื่อเปลี่ยนความชอบให้กลายเป็นความชำนาญ และต่อยอดไปสู่เส้นทางอาชีพที่ตั้งใจไว้อย่างสมบูรณ์"
+                    <p class="leading-loose text-xl">
+                        "เป้าหมายสูงสุดของการเรียนต่อ ไม่ใช่เพียงการได้รับปริญญา แต่คือการหล่อหลอมความรู้และประสบการณ์ ณ มหาวิทยาลัยเกษตรศาสตร์ เพื่อพัฒนาตนเองให้เต็มศักยภาพ เปลี่ยนความชอบให้กลายเป็นความเชี่ยวชาญ และก้าวต่อไปในเส้นทางอาชีพอย่างมั่นคง พร้อมสร้างคุณค่าให้แก่ตนเองและสังคมตลอดไป"
                     </p>
-                    <div class="mt-12 flex justify-between items-end">
+                    <div class="mt-16 flex justify-between items-end">
                         <p class="text-white/50 text-sm uppercase tracking-widest">EDUCATIONAL MINDSET</p>
-                        <p class="text-white/70 font-head tracking-wider">— PIMYADA ☁️ —</p>
+                        <p class="text-secondary font-head text-xl tracking-wider">— PIMYADA ☁️ —</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="edu" class="py-20">
+    <section id="edu" class="py-24">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20 gold-divider">
-                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">ประวัติการศึกษา</h2>
+            <div class="text-center mb-24 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block" data-aos="fade-up">ประวัติการศึกษา</h2>
             </div>
-            <div class="max-w-2xl mx-auto">
-                <div class="relative border-l border-secondary/30 ml-6 space-y-14">
-                    <div class="relative pl-10" data-aos="fade-right">
-                        <div class="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-secondary shadow-gold"></div>
-                        <h4 class="text-sm text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-3">
-                            <i class="fa-solid fa-school"></i> มัธยมศึกษาตอนต้น
+            <div class="max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-secondary/40 ml-8 space-y-16">
+                    <div class="relative pl-12" data-aos="fade-right">
+                        <div class="absolute left-[-12px] top-0 w-6 h-6 rounded-full bg-gradient-gold shadow-gold"></div>
+                        <h4 class="text-sm text-gray-500 uppercase tracking-widest mb-3 flex items-center gap-4">
+                            <i class="fa-solid fa-school text-secondary"></i> มัธยมศึกษาตอนต้น
                         </h4>
-                        <p class="text-xl font-medium text-primary">โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
+                        <p class="text-2xl font-medium text-primary">โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
                     </div>
-                    <div class="relative pl-10" data-aos="fade-right" data-aos-delay="150">
-                        <div class="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-secondary shadow-gold"></div>
-                        <h4 class="text-sm text-gray-500 uppercase tracking-wider mb-2 flex items-center gap-3">
-                            <i class="fa-solid fa-graduation-cap"></i> มัธยมศึกษาตอนปลาย
+                    <div class="relative pl-12" data-aos="fade-right" data-aos-delay="200">
+                        <div class="absolute left-[-12px] top-0 w-6 h-6 rounded-full bg-gradient-gold shadow-gold"></div>
+                        <h4 class="text-sm text-gray-500 uppercase tracking-widest mb-3 flex items-center gap-4">
+                            <i class="fa-solid fa-graduation-cap text-secondary"></i> มัธยมศึกษาตอนปลาย
                         </h4>
-                        <p class="text-xl font-medium text-primary">โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
+                        <p class="text-2xl font-medium text-primary">โรงเรียนกระทุ่มแบน "วิเศษสมุทคุณ"</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="sop" class="py-20 bg-white">
+    <!-- ✅ ความสามารถพิเศษ เฉพาะสิ่งที่ทำได้ สวยหรู -->
+    <section id="special" class="py-24 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20 gold-divider">
-                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary flex items-center justify-center gap-3" data-aos="fade-up">
+            <div class="text-center mb-24 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block" data-aos="fade-up">ความสามารถพิเศษ</h2>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-primary text-white p-10 md:p-12 rounded-3xl shadow-luxury" data-aos="fade-up">
+                    <ul class="space-y-5 text-xl">
+                        <li class="flex items-center gap-5"><i class="fa-solid fa-star text-secondary text-xl"></i> มีความรับผิดชอบ ตรงต่อเวลา และมีความขยันอดทน</li>
+                        <li class="flex items-center gap-5"><i class="fa-solid fa-star text-secondary text-xl"></i> ทักษะการสื่อสารและการนำเสนอเป็นอย่างดี</li>
+                        <li class="flex items-center gap-5"><i class="fa-solid fa-star text-secondary text-xl"></i> ทำงานเป็นทีมได้ดี มีภาวะผู้นำและการประสานงาน</li>
+                        <li class="flex items-center gap-5"><i class="fa-solid fa-star text-secondary text-xl"></i> เรียนรู้สิ่งใหม่ๆ ได้รวดเร็วและปรับตัวได้ดี</li>
+                        <li class="flex items-center gap-5"><i class="fa-solid fa-star text-secondary text-xl"></i> มีความละเอียดรอบคอบและแก้ปัญหาเฉพาะหน้าได้</li>
+                        <li class="flex items-center gap-5"><i class="fa-solid fa-star text-secondary text-xl"></i> ใช้โปรแกรมคอมพิวเตอร์พื้นฐานได้คล่องแคล่ว</li>
+                    </ul>
+                    <div class="mt-16 flex justify-end">
+                        <p class="text-secondary font-head text-xl tracking-wider">— MY SPECIAL TALENTS ✨ —</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sop" class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-24 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block flex items-center justify-center gap-4" data-aos="fade-up">
                     <i class="fa-solid fa-file-pen text-secondary"></i> Statement of Purpose
                 </h2>
-                <p class="text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="50">เจตจำนงและเป้าหมายในการศึกษา</p>
+                <p class="text-gray-500 mt-6 text-lg" data-aos="fade-up" data-aos-delay="50">เจตจำนงและเป้าหมายในการศึกษา</p>
             </div>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-accent p-10 rounded-2xl border-gold-luxury shadow-luxury text-center" data-aos="fade-up">
-                    <p class="text-xl leading-relaxed text-gray-700">
-                        ด้วยความมุ่งมั่นและความตั้งใจอย่างแน่วแน่ ดิฉันมีความประสงค์เข้าศึกษาต่อในคณะ…………… สาขา…………… มหาวิทยาลัย…………… เพื่อพัฒนาความรู้ ความสามารถ และศักยภาพของตนเองให้พร้อมต่อการประกอบวิชาชีพในอนาคต พร้อมนำองค์ความรู้ที่ได้รับไปต่อยอดความฝัน สร้างคุณค่าให้แก่สังคม และเป็นกำลังสำคัญในการพัฒนาประเทศต่อไป
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white p-10 md:p-14 rounded-3xl border-gold-luxury shadow-luxury text-center" data-aos="fade-up">
+                    <p class="text-xl md:text-2xl leading-loose text-gray-700">
+                        ด้วยความมุ่งมั่นและความตั้งใจอย่างแน่วแน่ ดิฉันมีความประสงค์เข้าศึกษาต่อในคณะ……………………… สาขา……………………… มหาวิทยาลัยเกษตรศาสตร์ เพื่อพัฒนาความรู้ ความสามารถ และศักยภาพของตนเองให้สมบูรณ์ พร้อมนำความรู้ที่ได้รับไปต่อยอดความฝัน สร้างประโยชน์ให้แก่สังคม และเป็นกำลังสำคัญในการพัฒนาประเทศต่อไปอย่างเต็มความสามารถ
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="act" class="py-20">
+    <section id="act" class="py-24 bg-white">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20 gold-divider">
-                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">กิจกรรมและผลงาน</h2>
+            <div class="text-center mb-24 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block" data-aos="fade-up">กิจกรรมและผลงาน</h2>
             </div>
-            <div class="max-w-3xl mx-auto space-y-8">
-                <div class="card-luxury bg-accent p-8 rounded-2xl" data-aos="fade-up">
-                    <h4 class="font-semibold text-primary mb-5 flex items-center gap-3 text-lg">
-                        <i class="fa-solid fa-briefcase text-secondary"></i> ประสบการณ์การทำงาน
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div class="card-luxury p-10 rounded-3xl" data-aos="fade-up">
+                    <h4 class="font-semibold text-primary mb-8 flex items-center gap-4 text-xl">
+                        <i class="fa-solid fa-briefcase text-secondary text-2xl"></i> ประสบการณ์การทำงาน
                     </h4>
-                    <div class="space-y-2 text-gray-700">
-                        <p><span class="font-medium text-primary">ชื่อกิจกรรม :</span> ผู้ช่วยขายสินค้าและบริการลูกค้า</p>
-                        <p><span class="font-medium text-primary">สถานที่ :</span> ร้านอาหาร-เครื่องดื่ม ภายในชุมชนซอย</p>
-                        <p><span class="font-medium text-primary">ช่วงเวลา :</span> ทุกวันหยุดเสาร์-อาทิตย์, ปิดเทอม มีนาคม-พฤษภาคม พ.ศ. 2568 – 2569</p>
-                        <p><span class="font-medium text-primary">หน้าที่รับผิดชอบ :</span> จัดเตรียมเครื่องดื่ม, เสิร์ฟสินค้า, คิดเงินและดูแลลูกค้า</p>
+                    <div class="space-y-4 text-lg">
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-48">ชื่อกิจกรรม :</span> ผู้ช่วยขายสินค้าและบริการลูกค้า</p>
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-48">สถานที่ :</span> ร้านอาหาร-เครื่องดื่ม ภายในชุมชนซอย</p>
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-48">ช่วงเวลา :</span> ทุกวันหยุดเสาร์-อาทิตย์, ปิดเทอม มีนาคม-พฤษภาคม พ.ศ. 2568 – 2569</p>
+                        <p><span class="font-semibold text-primary mr-6 inline-block w-48">หน้าที่รับผิดชอบ :</span> จัดเตรียมเครื่องดื่ม, เสิร์ฟสินค้า, คิดเงินและดูแลลูกค้า</p>
                     </div>
                 </div>
-                <div class="card-luxury bg-primary text-white p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="150">
-                    <h4 class="font-semibold mb-5 flex items-center gap-3 text-lg">
-                        <i class="fa-solid fa-lightbulb text-secondary"></i> สิ่งที่ได้รับและบทเรียน
+                <div class="card-luxury bg-primary text-white p-10 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="font-semibold mb-8 flex items-center gap-4 text-xl">
+                        <i class="fa-solid fa-lightbulb text-secondary text-2xl"></i> สิ่งที่ได้รับและบทเรียน
                     </h4>
-                    <p class="text-white/90 leading-relaxed">
-                        ได้ฝึกฝนความรับผิดชอบ การตรงต่อเวลา และการทำงานเป็นระบบ นอกจากนี้ยังพัฒนาทักษะการสื่อสาร การเข้าใจความต้องการของผู้อื่น และการจัดการปัญหาเฉพาะหน้าเมื่อให้บริการลูกค้า รวมถึงได้เรียนรู้คุณค่าของการทำงานและการวางแผนการใช้จ่ายเงินอย่างมีประสิทธิภาพค่ะ
+                    <p class="text-white/95 leading-loose text-xl">
+                        ได้ฝึกฝนความรับผิดชอบ การตรงต่อเวลา และการทำงานเป็นระบบอย่างมีระเบียบ นอกจากนี้ยังพัฒนาทักษะการสื่อสาร การเข้าใจความต้องการของผู้อื่น และการจัดการปัญหาเฉพาะหน้าเมื่อให้บริการลูกค้า รวมถึงได้เรียนรู้คุณค่าของการทำงาน การวางแผน และการใช้จ่ายเงินอย่างมีประสิทธิภาพค่ะ
                     </p>
-                    <div class="mt-12 flex justify-between items-end">
+                    <div class="mt-16 flex justify-between items-end">
                         <p class="text-white/50 text-sm uppercase tracking-widest">EXPERIENCE SUMMARY</p>
-                        <p class="text-white/70 font-head tracking-wider">— PIMYADA 💡 —</p>
+                        <p class="text-secondary font-head text-xl tracking-wider">— PIMYADA 💡 —</p>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-24 mb-12 gold-divider">
-                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">แฟ้มสะสมผลงาน</h2>
-                <p class="text-gray-500 mt-4">คลิกที่ภาพเพื่อดูรายละเอียด</p>
+            <div class="text-center mt-28 mb-16 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block" data-aos="fade-up">แฟ้มสะสมผลงาน</h2>
+                <p class="text-gray-500 mt-6 text-lg">คลิกที่ภาพเพื่อดูรายละเอียด</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="card-luxury bg-accent p-5 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="50">
-                    <div class="aspect-[3/4] bg-white rounded-xl mb-4 flex items-center justify-center text-gray-300">
-                        <i class="fa-solid fa-image text-5xl"></i>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+                <div class="card-luxury p-6 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="50">
+                    <div class="aspect-[3/4] bg-gradient-to-br from-white to-gray-50 rounded-2xl mb-6 flex items-center justify-center text-gray-300 shadow-inner">
+                        <i class="fa-solid fa-image text-6xl"></i>
                     </div>
-                    <p class="font-medium text-primary tracking-wide">ผลงานที่ 1</p>
+                    <p class="font-semibold text-primary tracking-wide text-lg">ผลงานที่ 1</p>
                 </div>
-                <div class="card-luxury bg-accent p-5 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="aspect-[3/4] bg-white rounded-xl mb-4 flex items-center justify-center text-gray-300">
-                        <i class="fa-solid fa-image text-5xl"></i>
+                <div class="card-luxury p-6 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="150">
+                    <div class="aspect-[3/4] bg-gradient-to-br from-white to-gray-50 rounded-2xl mb-6 flex items-center justify-center text-gray-300 shadow-inner">
+                        <i class="fa-solid fa-image text-6xl"></i>
                     </div>
-                    <p class="font-medium text-primary tracking-wide">ผลงานที่ 2</p>
+                    <p class="font-semibold text-primary tracking-wide text-lg">ผลงานที่ 2</p>
                 </div>
-                <div class="card-luxury bg-accent p-5 rounded-2xl text-center" data-aos="fade-up" data-aos-delay="150">
-                    <div class="aspect-[3/4] bg-white rounded-xl mb-4 flex items-center justify-center text-gray-300">
-                        <i class="fa-solid fa-image text-5xl"></i>
+                <div class="card-luxury p-6 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="250">
+                    <div class="aspect-[3/4] bg-gradient-to-br from-white to-gray-50 rounded-2xl mb-6 flex items-center justify-center text-gray-300 shadow-inner">
+                        <i class="fa-solid fa-image text-6xl"></i>
                     </div>
-                    <p class="font-medium text-primary tracking-wide">ผลงานที่ 3</p>
+                    <p class="font-semibold text-primary tracking-wide text-lg">ผลงานที่ 3</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-white">
+    <section id="contact" class="py-28">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-20 gold-divider">
-                <h2 class="text-3xl md:text-4xl font-head font-bold text-primary" data-aos="fade-up">ช่องทางการติดต่อ</h2>
+            <div class="text-center mb-24 gold-divider">
+                <h2 class="text-3xl md:text-5xl font-head font-bold text-primary decor-line inline-block" data-aos="fade-up">ช่องทางการติดต่อ</h2>
             </div>
-            <div class="flex flex-wrap justify-center gap-8 max-w-2xl mx-auto">
-                <a href="#" class="card-luxury flex items-center gap-4 bg-accent px-10 py-4 rounded-2xl" data-aos="fade-up">
-                    <i class="fa-brands fa-facebook-f text-2xl text-secondary"></i>
-                    <span class="font-medium">Pimyada Meeliang</span>
+            <div class="flex flex-wrap justify-center gap-10 max-w-3xl mx-auto">
+                <a href="#" class="card-luxury flex items-center gap-5 px-12 py-5 rounded-3xl" data-aos="fade-up">
+                    <i class="fa-brands fa-facebook-f text-3xl text-secondary"></i>
+                    <span class="font-medium text-lg">Pimyada Meeliang</span>
                 </a>
-                <a href="#" class="card-luxury flex items-center gap-4 bg-accent px-10 py-4 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fa-brands fa-instagram text-2xl text-secondary"></i>
-                    <span class="font-medium">ppiimmyada_</span>
+                <a href="#" class="card-luxury flex items-center gap-5 px-12 py-5 rounded-3xl" data-aos="fade-up" data-aos-delay="150">
+                    <i class="fa-brands fa-instagram text-3xl text-secondary"></i>
+                    <span class="font-medium text-lg">ppiimmyada_</span>
                 </a>
-                <a href="#" class="card-luxury flex items-center gap-4 bg-accent px-10 py-4 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fa-solid fa-envelope text-2xl text-secondary"></i>
-                    <span class="font-medium">nnvv0110@gmail.com</span>
+                <a href="#" class="card-luxury flex items-center gap-5 px-12 py-5 rounded-3xl" data-aos="fade-up" data-aos-delay="250">
+                    <i class="fa-solid fa-envelope text-3xl text-secondary"></i>
+                    <span class="font-medium text-lg">nnvv0110@gmail.com</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-primary text-white/80 py-10 text-center text-sm tracking-wider">
-        <p>&copy; 2026 PIMYADA MEELIANG | All Rights Reserved.</p>
+    <footer class="bg-primary text-white/80 py-12 text-center text-base tracking-wider border-t border-secondary/20">
+        <p>&copy; 2026 PIMYADA MEELIANG | ALL RIGHTS RESERVED</p>
+        <p class="mt-3 text-white/50 text-sm">PORTFOLIO FOR KASETSART UNIVERSITY ADMISSION</p>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>AOS.init({ once: true, duration: 1000, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' });</script>
+    <script>AOS.init({ once: true, duration: 1200, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' });</script>
 </body>
 </html>
